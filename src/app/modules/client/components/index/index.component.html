@@ -1,0 +1,104 @@
+<!-- <div class="container">
+    <h1>Venha conhecer Angola </h1>
+    <section class="filtrar-viagem">
+        <div class="">
+            <label for="">Rota</label>
+            <p-dropdown
+            [options]="rotaList"
+            placeholder="Selecione a rota"
+            optionLabel="label"
+            formControlName="pkRota"
+            class="custom-dropdown"
+            styleClass="drop-down"
+            >
+            </p-dropdown>
+        </div>
+
+        <div>
+            <label for="">Data</label>
+            
+            <p-calendar formControlName="dataViagem " styleClass="custom-calendar" inputId="birth_date">
+             
+            </p-calendar>
+            
+        </div>
+
+        <div>
+            <app-button  typeBtn="btn-filter" text="Procurar" (click)="procurar()"></app-button>
+        </div>
+           
+    </section>
+</div> -->
+
+<div class="hero">
+    <div class="container">
+        <h1>Venha conhecer Angola</h1>
+
+       
+            <div class="box-center">
+                <form class="filtrar-viagem" [formGroup]="formulario" (ngSubmit)="procurar()">
+                    <div class="">
+                        <label for="">Rota</label>
+                        <p-dropdown
+                            [options]="rotaList"
+                            placeholder="Selecione a rota"
+                            optionLabel="label"
+                            formControlName="pkRota"
+                            class="custom-dropdown"
+                            styleClass="drop-down">
+                        </p-dropdown>
+                    </div>
+    
+                    <div>
+                        <!-- <label for="">Data</label>
+                        <p-calendar formControlName="dataViagem" styleClass="custom-calendar" inputId="birth_date">
+                            
+                        </p-calendar> -->
+                        <app-input
+        label="Data" 
+        id="dataViagem"
+        type="date" 
+        placeholder="digite uma data"
+        formControlName="dataViagem"
+        [control]="getControl('dataViagem')"
+        >
+       </app-input>
+                    </div>
+    
+                    <div class="filtrar-btn">
+                        <app-button typeBtn="btn-filter" text="Procurar"></app-button>
+                    </div>
+                </form>
+    
+                <div class="box-reservas">
+                    <a [routerLink]="['/cliente/home']" class="my-reservation">
+                        <i class="pi pi-ticket" style="color: black"></i>
+                        <span>Minhas Reservas</span>
+                    </a>
+                    <!-- <div class="my-reservation">
+                        <i class="pi pi-ticket" style="color: slateblue"></i>
+                        <a href="">Minhas Reservas</a>
+                        
+                        
+                        
+                    </div> -->
+                    <!-- <div class="help">
+                        <i class="pi pi-question-circle" style="color: slateblue"></i>
+                        <a href="">Ajuda</a>
+                    </div> -->
+                    <a [routerLink]="['/cliente/home']" class="help">
+                        <i class="pi pi-question-circle" style="color: black"></i>
+                        <span >Ajuda</span>
+                    </a>
+                    
+                </div>
+
+                <div class="box-reservas">
+                    
+                </div>
+            
+            
+            </div>
+    </div>
+</div>
+

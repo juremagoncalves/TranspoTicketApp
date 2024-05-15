@@ -1,0 +1,188 @@
+<!-- <app-dropdown 
+[options]="marcaList"
+placeholder="Selecione a marca"
+optionLabel="designacao"
+[filter]="true"
+filterBy="designacao"
+[showClear]="true"
+>
+
+</app-dropdown> -->
+<!-- //// -->
+
+<p-confirmDialog></p-confirmDialog>
+<app-page-title text="Transporte"></app-page-title>
+<app-button  text="Adicionar" (click)="openDialog()"></app-button>
+<p-dialog header="Transporte" [(visible)]="isDialogOpen" [style]="{ 'width': '400px' }" (onHide)="onCancel()">
+    <form [formGroup]="formulario" (ngSubmit)="editarModal ? update() : onSubmit()">
+        <app-input
+        label="Matricula" 
+        id="matricula"
+        type="text" 
+        placeholder="digite uma matricula"
+        formControlName="matricula"
+        [control]="getControl('matricula')"
+        >
+       </app-input>
+
+
+       <app-input
+        label="Capacidade" 
+        id="capacidade"
+        type="number" 
+        placeholder="digite uma matricula"
+        formControlName="capacidade"
+        [control]="getControl('capacidade')"
+        >
+       </app-input>
+
+
+       <!--  -->
+       <div class="">
+        <label for="">Marca</label>
+        <p-dropdown
+        [options]="marcaList"
+        placeholder="Selecione a marca"
+        optionLabel="designacao"
+        formControlName="pkMarca"
+        class="custom-dropdown"
+        styleClass="drop-down"
+        >
+        </p-dropdown>
+        
+       </div>
+
+       
+       
+        <div>
+        <label for="">Classe de serviço</label>
+        <p-dropdown
+        [options]="classeServicoList"
+        placeholder="Selecione a classe "
+        optionLabel="designacao"
+        formControlName="pkClasseServico"
+        styleClass="drop-down"
+        >
+        </p-dropdown>
+        </div>
+        
+        
+        <div>
+        <label for="">Tipo Transporte</label>
+        <p-dropdown
+        [options]="tipoTransporteList"
+        placeholder="Selecione o tipo de transporte"
+        optionLabel="designacao"
+        formControlName="pkTipoTransporte"
+        styleClass="drop-down"
+        >
+        </p-dropdown>
+        </div>
+        
+
+        <!-- <br> <br> -->
+
+       <!--  -->
+       
+       
+       <!-- <app-dropdown 
+        [options]="marcaList"
+        placeholder="Selecione a marca"
+        optionLabel="designacao"
+        
+        [showClear]="true"
+        formControlName="pkMarca"
+        
+        >
+        </app-dropdown>
+
+         
+        <app-dropdown 
+        [options]="classeServicoList"
+        placeholder="Selecione a Classe de ser"
+        optionLabel="designacao"
+        
+        [showClear]="true"
+        formControlName="pkClasseServico"
+        
+        >
+        </app-dropdown>
+       
+       
+       <app-dropdown 
+       [options]="tipoTransporteList"
+       placeholder="Selecione o tipo de transporte"
+       optionLabel="designacao"
+       
+       [showClear]="true"
+       formControlName="pkTipoTransporte"
+       
+       >
+       </app-dropdown>
+       <br>
+       <br> -->
+       <br>
+       
+
+       <div class="btn">
+        <app-button
+         typeBtn="add-itemModal" 
+         [text]="editarModal ? 'Actualizar' : 'Adicionar'" 
+         [disabled]="!formulario.valid">
+        </app-button>
+
+        <app-button
+         
+         typeBtn="add-btn-with-border"  
+         text="Cancelar" 
+         (click)="closeDialog()"
+         type="button">
+        </app-button>
+       </div>
+    </form> 
+</p-dialog>
+
+<app-table [tableData]="transporteList" [columnArray]="columnArray" (editClicked)="edit($event)"
+    (deleteClicked)="delete($event)" (assentoClicked)="findAllAssentoByPkTransporte($event)" [showActionButtonb]="true"
+    [assentoClickedOptional]="true"
+>
+</app-table>
+
+<p-dialog header="Assento" [(visible)]="isDialogOpenAssento" [style]="{ 'width': '500px' }"
+>
+    <div class="estado">
+        <div class="estado-assento reservado">Reservado</div>
+        <div class="estado-assento disponivel">Disponível</div>
+        <div class="estado-assento inativo">Inactivo</div>
+    </div>
+   
+    <div class="container">
+        
+        <div class="buss-box">
+            
+          <div class="buss-head">
+            
+          </div>
+  
+          <div class="buss-body">
+            <div class="buss-body__content">
+                <div class="buss-seats-box">
+                   
+                    <div *ngFor="let seatRow of seats" class="seat-row">
+                        <ng-container *ngFor="let seat of seatRow; let i = index">
+                            <!-- <div class="seat">1</div> -->
+                            <div class="seat" [attr.id-assento]="seat.getAttribute('id-assento')">{{ seat.innerText }}</div>
+                            <span *ngIf="shouldRenderCorridor(seatRow.length, i)" class="corridor-span"></span>
+                        </ng-container>
+                    </div>
+                    
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</p-dialog>
+
+
+

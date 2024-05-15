@@ -1,0 +1,144 @@
+
+
+<div class="spinner-container" *ngIf="!pedido">
+    <!-- Exemplo usando Angular Material -->
+    <!-- <mat-spinner></mat-spinner> -->
+
+    <!-- Exemplo usando HTML/CSS puro -->
+    <div class="loader"></div>
+</div>
+
+
+
+<div *ngIf="tipoPagamentoSelecionado === 'REFERENCIA'">
+    <div *ngIf="pedido" class="container">
+        <div class="back">
+            <button class="voltar" (click)="voltar()">  Voltar</button>
+        </div>
+        <div class="logo">
+            <img src="../../../../../assets/express.jpeg" alt="">
+        </div>
+        <h3>Pague com referência</h3>
+    
+        <div class="detalhes-pagamento">
+            <p class="cod-referencia">Copia o código abaixo para pagar via referência </p>
+    
+            <input type="text" [value]="pedido.referencia">
+            <div class="item">
+                <p>Tempo para efectuar o pagamento</p>
+                <div class="time-reserva">{{formattedTime}}</div>
+            </div>
+            <div class="entidade item">
+                <label for="">Entidade</label>
+                <label for="">{{pedido.entidade}}</label>
+            </div>
+    
+           
+    
+            <div *ngFor="let assento of assento" class="lugar item">
+                <span for="">{{assento.numeroAssento}}</span>
+                <span for="">10000kz</span>
+                <!-- <span for="">A2</span> -->
+             </div>
+    
+             <div class="item">
+                <p>Origem</p>
+                <p>{{pedido.programacao.fkRota.fkProvinciaOrigem.designacao}}</p>
+             </div>
+    
+             <div class="item">
+                <p>Destino</p>
+                <p>{{pedido.programacao.fkRota.fkProvinciaDestino.designacao}}</p>
+             </div>
+    
+             <div class="item">
+                <span for="">Valor total</span>
+                <span for="">{{pedido.totalPago}}</span>
+            </div>
+            <div class="item">
+                <span for="">Data</span>
+                <span for="">{{pedido.programacao.dataViagem | date: 'dd/MM/yyyy'}}</span>
+            </div>
+    
+            
+            <button (click)="createTicket()">Pagar Agora</button>
+        </div>
+    
+         
+    
+    </div>
+    
+</div>
+
+<div *ngIf="tipoPagamentoSelecionado === 'TRANSFERENCIABANCARIA'">
+    
+    <!--  -->
+    <div *ngIf="pedido" class="container">
+        <div class="logo">
+            <fa-icon [icon]="faBank" size="3x" class="icone-banco"></fa-icon>
+        </div>
+        <h3>Pague por Transferência Bancária</h3>
+    
+        <div class="detalhes-pagamento">
+            
+            <div class="itemTransferencia">
+                <p>Tempo para efectuar o pagamento</p>
+                <div class="time-reserva">{{formattedTime}}</div>
+            </div>
+            <div class="entidade item">
+                <label for="">Nome do titular da conta</label>
+                <label for="">CAHEDY</label>
+            </div>
+            <p class="bank">Banco Bai</p>
+            <div class="entidade item">
+                <label for="">IBAN</label>
+                <label for="">AO06 0040 0000 0284 4739 1016 4</label>
+            </div>
+
+            
+            <div class="entidade item">
+                <label for="">Conta</label>
+                <label for="">102844739 10 001 (Moeda AKZ)</label>
+            </div>
+
+            <div class="entidade item">
+                <label for="">Referência do produto</label>
+                <label for="">{{pedido.referencia}}</label>
+            </div>
+    
+            <p class="">Detalhes da sua reserva</p>
+    
+            <div *ngFor="let assento of assento" class="lugar item">
+                <span for="">{{assento.numeroAssento}}</span>
+                <span for="">10000kz</span>
+                <!-- <span for="">A2</span> -->
+             </div>
+    
+             <div class="item">
+                <p>Origem</p>
+                <p>{{pedido.programacao.fkRota.fkProvinciaOrigem.designacao}}</p>
+             </div>
+    
+             <div class="item">
+                <p>Destino</p>
+                <p>{{pedido.programacao.fkRota.fkProvinciaDestino.designacao}}</p>
+             </div>
+    
+             <div class="item">
+                <span for="">Valor total</span>
+                <span for="">{{pedido.totalPago}}</span>
+            </div>
+            <div class="item">
+                <span for="">Data</span>
+                <span for="">{{pedido.programacao.dataViagem | date: 'dd/MM/yyyy'}}</span>
+            </div>
+    
+            
+            <button (click)="createTicket()">Pagar Agora</button>
+        </div>
+    
+         
+    
+    </div>
+</div>
+

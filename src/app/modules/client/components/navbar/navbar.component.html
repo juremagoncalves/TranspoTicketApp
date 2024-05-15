@@ -1,0 +1,24 @@
+<nav>
+    <ul>
+        <li><a routerLink="/cliente/home">Home</a></li>
+        <!-- <li><a href="#">Reserva</a>
+            
+        </li> -->
+        <div class="dropdown">
+            <button class="dropbtn">Reserva 
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a routerLink="/cliente/pesquisar-viagens">Pesquisar Viagens</a>
+              <!-- <a href="#">Link 2</a> -->
+              <!-- <a href="#">Link 3</a> -->
+            </div>
+          </div> 
+        <li><a [routerLink]="['/cliente/home']">Serviços</a></li>
+        
+        <li><a [routerLink]="['/cliente/home']">Ajuda</a></li>
+        <!-- <li><a href="#">Sair</a></li> -->
+
+        <button class="logout" (click)="logout()">Sair</button>
+    </ul>
+</nav>

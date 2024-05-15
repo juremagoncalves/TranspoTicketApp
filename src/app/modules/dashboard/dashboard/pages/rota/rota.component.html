@@ -1,0 +1,108 @@
+<p-confirmDialog></p-confirmDialog>
+<app-page-title text="Rota"></app-page-title>
+<app-button  text="Adicionar" (click)="openDialog()"></app-button>
+<p-dialog header="Rota" [(visible)]="isDialogOpen" [style]="{ 'width': '400px' }" (onHide)="onCancel()">
+    <form [formGroup]="formulario" (ngSubmit)="editarModal ? update() : onSubmit()">
+
+        <!-- <div class="">
+            <label for="">Classe Serviço</label>
+            <p-dropdown
+            [options]="classeServicoList"
+            placeholder="Selecione a Classe de Serviço"
+            optionLabel="designacao"
+            formControlName="pkClasseServico"
+            class="custom-dropdown"
+            styleClass="drop-down"
+            (onChange)="getTransporteByPkClasseServico($event.value)"
+            >
+            </p-dropdown>
+            
+           </div> -->
+       <!--  -->
+       <!-- <div class="">
+        <label for="">Transporte</label>
+        <p-dropdown
+        [options]="transporteList"
+        placeholder="Selecione o transporte"
+        optionLabel="matricula"
+        formControlName="pkTransporte"
+        class="custom-dropdown"
+        styleClass="drop-down"
+        >
+        </p-dropdown>
+        
+       </div> -->
+
+       
+       
+        <div>
+        <label for="">Província Origem</label>
+        <p-dropdown
+        [options]="provinciaOrigemList"
+        placeholder="Selecione a Província"
+        optionLabel="designacao"
+        formControlName="pkProvinciaOrigem"
+        styleClass="drop-down"
+        (onChange)="filtrarProvinciaDestino()"
+        [filter]="true" filterBy="designacao"
+        >
+        </p-dropdown>
+        </div>
+        
+        
+        <div>
+        <label for="">Província Destino</label>
+        <p-dropdown
+        [options]="provinciaDestinoList"
+        placeholder="Selecione a província destino"
+        optionLabel="designacao"
+        formControlName="pkProvinciaDestino"
+        styleClass="drop-down"
+        [filter]="true" filterBy="designacao"
+        >
+        </p-dropdown>
+        </div>
+
+        <!-- <app-input
+        label="Preço" 
+        id="preco"
+        type="number" 
+        placeholder="digite um Preço"
+        formControlName="preco"
+        [control]="getControl('preco')"
+        >
+       </app-input> -->
+        
+       <br>
+       
+
+       <div class="btn">
+        <app-button
+         typeBtn="add-itemModal" 
+         [text]="editarModal ? 'Actualizar' : 'Adicionar'" 
+         [disabled]="!formulario.valid">
+        </app-button>
+
+        <app-button
+         
+         typeBtn="add-btn-with-border"  
+         text="Cancelar" 
+         (click)="closeDialog()"
+         type="button">
+        </app-button>
+       </div>
+
+    </form> 
+</p-dialog>
+
+<app-table [tableData]="rotaList" [columnArray]="columnArray" (editClicked)="edit($event)"
+    (deleteClicked)="delete($event)" [showActionButtonb]="true"
+
+>
+
+
+</app-table>
+
+<!-- <button (click)="onSubmit()">ccc</button> -->
+
+

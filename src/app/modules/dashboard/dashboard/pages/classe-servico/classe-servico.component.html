@@ -1,0 +1,40 @@
+
+<p-confirmDialog></p-confirmDialog>
+<app-page-title text="Classe de Serviço"></app-page-title>
+<app-button  text="Adicionar" (click)="openDialog()"></app-button>
+<p-dialog header="Classe de Serviço" [(visible)]="isDialogOpen" [style]="{ 'width': '400px' }" (onHide)="onCancel()">
+    <form [formGroup]="formulario" (ngSubmit)="editarModal ? update() : onSubmit()">
+        <app-input
+        label="Designacao" 
+        id="designacao"
+        type="text" 
+        placeholder="digite uma classe de serviço"
+        formControlName="designacao"
+        [control]="getControl('designacao')"
+        >
+       </app-input>
+
+       <div class="btn">
+        <app-button
+         typeBtn="add-itemModal" 
+         [text]="editarModal ? 'Actualizar' : 'Adicionar'" 
+         [disabled]="!formulario.valid">
+        </app-button>
+        <app-button
+         
+         typeBtn="add-btn-with-border"  
+         text="Cancelar" 
+         (click)="closeDialog()"
+         type="button">
+        </app-button>
+       </div>
+    </form> 
+</p-dialog>
+
+<app-table [tableData]="classeServicoList" [columnArray]="columnArray" (editClicked)="edit($event)"
+    (deleteClicked)="delete($event)" [showActionButtonb]="true"
+
+>
+
+
+</app-table>

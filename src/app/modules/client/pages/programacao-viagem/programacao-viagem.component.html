@@ -1,0 +1,65 @@
+<div class="container">
+  <button class="voltar " (click)="voltar()"> < Voltar</button>
+  <!-- <p class="links">
+    <a routerLink="/cliente/home">Home</a> > 
+    <a routerLink="/cliente/pesquisar-viagens">Pesquisar Viagens</a> >
+    <a routerLink="/cliente/programacao">Programação</a> 
+</p> -->
+  <!-- <h1>ooooooooooooooooooooooooo</h1> -->
+    <div class="programacao" *ngFor="let item of programacoesFiltradas" >
+      <!-- <p>Origem: {{item.fkRota.fkProvinciaOrigem.designacao}}</p>
+      <p>Destino: {{item.fkRota.fkProvinciaDestino.designacao}}</p>
+      <p>Data: {{item.dataViagem | date: 'dd/MM/yyyy'}}</p>
+      <p>Dia Semana: {{item.diaSemana}}</p>
+      <p>Hora Partida: {{item.horaPartida}}</p>
+      <p>Hora Partida: {{item.horaChegada}}</p>
+      <p>Preço: {{item.fkRota.preco}} kz</p> -->
+      <!-- *ngFor="let item of programacoesFiltradas" -->
+      <div class="item1">
+        <div class="origem-hora-partida">
+          <p>{{item.horaPartida}}</p>
+          <p>De {{item.fkRota.fkProvinciaOrigem.designacao}}</p>
+          
+        </div>
+        <div class="destino-hora-chegada"> 
+          <p>{{item.horaChegada}}</p>
+          <p>Para {{item.fkRota.fkProvinciaDestino.designacao}}</p>
+         
+        </div>
+        <div class="preco">
+          <p>Preço: {{ precos[item.fkRota.pkRota + '-' + item.fkTransporte.pkTransporte] }} KZ</p> 
+        </div>
+        <!--   -->
+      </div>
+     
+     <div class="item2">
+      <div>
+        <p>{{item.dataViagem | date: 'dd/MM/yyyy'}}</p>
+        <p>{{item.diaSemana}}</p>
+        
+      </div>
+
+      <div class="dados-car">
+        <div class="car">
+          <i class="pi  pi-car" style="color: black"></i>
+          <p>{{item.fkTransporte.matricula}}</p>
+        </div>
+        <div>
+          <p>{{item.fkTransporte.fkMarca.designacao}}</p>
+        </div>
+
+        <div>
+          <p>{{item.fkTransporte.fkClasseServico.designacao}}</p>
+        </div>
+      </div>
+      <button (click)="continuar(item)" >Continuar
+        <i class="pi  pi-arrow-right" style="color: white"></i>
+      </button>
+     </div>
+      
+      
+     
+     
+      <!-- <button (click)="continuar(item)">Continuar</button> -->
+    </div>
+</div>

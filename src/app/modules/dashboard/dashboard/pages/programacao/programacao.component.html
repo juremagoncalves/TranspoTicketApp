@@ -1,0 +1,125 @@
+<p-confirmDialog></p-confirmDialog>
+<app-page-title text="Programação"></app-page-title>
+<app-button  text="Adicionar" (click)="openDialog()"></app-button>
+<p-dialog header="Programação" [(visible)]="isDialogOpen" [style]="{ 'width': '500px' }" (onHide)="onCancel()">
+    <form [formGroup]="formulario" (ngSubmit)="editarModal ? update() : onSubmit1()">
+
+       <div class="">
+        <label for="">Rota</label>
+        <p-dropdown
+        [options]="rotaList"
+        placeholder="Selecione a rota"
+        optionLabel="label"
+        formControlName="pkRota"
+        class="custom-dropdown"
+        styleClass="drop-down"
+        >
+        </p-dropdown>
+        
+       </div>
+
+       <div class="">
+        <label for="">Transporte</label>
+        <p-dropdown
+        [options]="transporteList"
+        placeholder="Selecione o transporte"
+        optionLabel="matricula"
+        formControlName="pkTransporte"
+        class="custom-dropdown"
+        styleClass="drop-down"
+        >
+        </p-dropdown>
+        
+       </div>
+
+       <app-input
+        label="Hora Partida" 
+        id="horaPartida"
+        type="text" 
+        placeholder="digite a hora de partida"
+        formControlName="horaPartida"
+        [control]="getControl('horaPartida')"
+        >
+       </app-input>
+
+       <app-input
+        label="Hora Chegada" 
+        id="horaChegada"
+        type="text" 
+        placeholder="digite a hora de chegada"
+        formControlName="horaChegada"
+        [control]="getControl('horaChegada')"
+        >
+       </app-input>
+
+       <div>
+        <!-- <label for="">Data</label> -->
+        <!--  -->
+        <!-- <p-calendar formControlName="dataViagem " styleClass="custom-calendar" > -->
+          <!-- <label for="birth_date">Birth Date</label> -->
+        <!-- </p-calendar> -->
+        <!-- <p-calendar formControlName="dataViagem" styleClass="custom-calendar" dateFormat="dd/mm/yy" placeholder="12/12/24">
+                            
+        </p-calendar> -->
+        <app-input
+          label="Data" 
+          id="dataViagem"
+          type="date" 
+          placeholder="digite uma data"
+          formControlName="dataViagem"
+          [control]="getControl('dataViagem')"
+          >
+       </app-input>
+        
+       </div>
+       
+        
+       <br>
+
+       <div class="btn">
+        <app-button
+         typeBtn="add-itemModal" 
+         [text]="editarModal ? 'Actualizar' : 'Adicionar'" 
+         [disabled]="!formulario.valid">
+        </app-button>
+
+        <app-button
+         
+         typeBtn="add-btn-with-border"  
+         text="Cancelar" 
+         (click)="closeDialog()"
+         type="button">
+        </app-button>
+       </div>
+    </form> 
+</p-dialog>
+
+<div class="container">
+  <div class="programacoes" *ngFor="let item of programacaoList">
+   
+    <div>
+      <h1>Programação de viagem</h1>
+      <p>id: {{item.fkRota.pkRota}}</p>
+      <p>Origem: {{item.fkRota.fkProvinciaOrigem.designacao}}</p>
+      <p>Destino: {{item.fkRota.fkProvinciaDestino.designacao}}</p>
+      <p>Data: {{item.dataViagem | date: 'dd/MM/yyyy'}}</p>
+      <p>Dia Semana: {{item.diaSemana}}</p>
+      <p>Hora Partida: {{item.horaPartida}}</p>
+      <p>Hora Partida: {{item.horaChegada}}</p>
+      <p>Transporte: {{item.fkTransporte.matricula}}</p>
+      <p>Classe de Serviço: {{item.fkTransporte.fkClasseServico.designacao}}</p>
+      <p>Preço: {{ precos[item.fkRota.pkRota + '-' + item.fkTransporte.pkTransporte] }}</p>
+      <!-- <p>Preço: {{findPrecoByPkRotaAndPkTransporte(item.fkRota.pkRota, item.fkTransporte.pkTransporte)}}</p> -->
+      <!-- <p>Preço: {{ precos[item.fkRota.pkRota + '-' + item.fkTransporte.pkTransporte] }}</p> -->
+      <!-- <p>Preço: {{item.fkRota.preco}} kz</p> -->
+    </div>
+
+    <div class="btn btn-card">
+      <app-button typeBtn="add-btn-with-border"  text="Editar"  (click)="edit(item)"></app-button>
+      <app-button typeBtn="delete-button" text="Delete"  (click)="delete(item)" ></app-button>
+    </div>
+    
+
+  </div>
+  
+</div>

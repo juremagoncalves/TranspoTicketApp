@@ -1,0 +1,68 @@
+<section>
+    <img src="../../../assets/logo1.svg" alt="Logo da empresa" />
+<div class="container">
+    <h1>Por favor, digite suas informações de registo</h1>
+    <form  class="form-section" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      
+      <app-input
+       label="Nome" 
+       id="nome"
+       type="text" 
+       placeholder="digite seu nome"
+       formControlName="nome"
+       [control]="getControl('nome')"
+       >
+      </app-input>
+
+      <app-input 
+      label="BI" 
+      id="bi"
+      type="text" 
+      placeholder="digite seu nº de identificação"
+      formControlName="bi"
+      [control]="getControl('bi')"
+      >
+    </app-input>
+
+      <app-input 
+      label="Telefone" 
+      id="telefone"
+      type="text" 
+      placeholder="digite seu nº de telefone"
+      formControlName="telefone"
+      [control]="getControl('telefone')"
+      >
+    </app-input>
+
+      <app-input 
+      label="Email" 
+      id="email"
+      type="email" 
+      placeholder="Adrian@gmail.com"
+      formControlName="email"
+      [control]="getControl('email')"
+      >
+    </app-input>
+
+      <app-input 
+      label="Senha" 
+      id="password"
+      type="password" 
+      placeholder="************"
+      formControlName="password"
+      [control]="getControl('password')"
+      >
+
+      </app-input>
+     
+      <div class="accept-terms">
+        <input type="checkbox" />
+        <p> <span>Aceito</span> os termos e condições de uso</p>
+      </div>
+
+      <app-button typeBtn="login-Resgister" text="Registar" [disabled]="!formulario.valid"></app-button>
+
+      <p class="sigin">Já tem uma conta <a routerLink="/login">Entrar</a></p>
+    </form>
+  </div>
+</section>

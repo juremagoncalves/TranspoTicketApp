@@ -1,0 +1,80 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-weight: bold;
+}
+
+ a{
+    color: #0082e6;
+    text-decoration: none;
+    
+    margin-left: 50px;
+}
+.i{
+    display: flex;
+    gap: 10px;
+    /* flex-direction: column; */
+}
+.info{
+    background-color: #8c8c8c;
+    color: black ;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+/* #2196f3 */
+.slogan{
+    background-color:#0082e6 ;
+    color: white;
+    margin-bottom: 10px;
+    padding: 10px;
+
+}
+
+.DadosPedido{
+    background-color: #d6d6d6;
+    margin-bottom: 10px;
+    padding: 10px;
+    
+    
+
+}
+
+.ticket-detail{
+    background-color: #d6d6d6;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.preco{
+    background-color: #d6d6d6;
+    padding: 10px;
+}
+
+.item{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .itemAssento{
+
+} */
+
+.btn-continue{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .continue{
+    width: 60%;
+    color: white;
+    background-color:#0082e6;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    
+  }

@@ -1,0 +1,167 @@
+
+<div class="back">
+    <button class="voltar" (click)="voltar()">  Voltar</button>
+</div>
+<div class="container1">
+    <div class="left-container">
+        <div class="assentos">
+            <div class="reserva-lugares">
+                <div class="number">1</div>
+                <h2>Reserva de lugares</h2>
+                
+            </div>
+    
+            <button class="btn-select-seat" (click)="findAllAssentoByPkTransporte()">Selecione o teu lugar
+                <!-- <i class="pi  pi-arrow-right" style="color: black"></i> -->
+
+            </button>
+        </div>
+        
+        <div class="extras">
+            <div class="head-extras">
+                <div class="number-two">2</div>
+                <h2>Extras</h2>
+            </div>
+            <div class="bagagem">
+                <div class="icon">
+                    <i class="pi  pi-shopping-bag " style="font-size: 2rem"></i>
+                </div>
+                <div>
+                    <h3>Incluído por pessoa</h3>
+                    <p>1 Bagagem de mão | 7 kg · 42×30×18 cm</p>
+                    <p>1 Bagagem de porão | 20 kg · 80×50×30 cm</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-tipo-pagamento">
+        <div class="head-extras">
+            <div class="number-two">3</div>
+            <h2>Pagamento</h2>
+        </div>
+        <div class="checkbox-pagamento">
+             
+            <input type="radio" name="size" id="referencia" value="REFERENCIA" [(ngModel)]="tipoPagamentoSelecionado" (change)="atualizarNomeBotao()">
+            <label for="referencia">Referência</label>
+        
+            <input type="radio" name="size" id="transferencia" value="TRANSFERENCIABANCARIA" [(ngModel)]="tipoPagamentoSelecionado" (change)="atualizarNomeBotao()" >
+            <label for="transferencia">Transferência Bancária</label>
+        </div>
+        </div>
+    </div>
+    <div *ngIf="programacao" class="tua-reserva">
+        <div class="time">
+           <h3>A tua Reserva</h3>
+           <div class="time-reserva">{{formatedTime}}</div>     
+        </div>
+        <div class="prog-viagem">
+            <p>{{programacao.diaSemana}}, {{ programacao.dataViagem | date:'dd MMMM yyyy' }}</p>
+            <div class="origem rota">
+                <p>{{programacao.fkRota.fkProvinciaOrigem.designacao}}</p>
+                <p class="hora">{{programacao.horaPartida}}</p>
+            </div>
+            <div class="destino rota">
+                <p>{{programacao.fkRota.fkProvinciaDestino.designacao}}</p>
+                <p class="hora">{{programacao.horaChegada}}</p>
+            </div>
+
+        </div>
+        <div class="lugar-selecionado" *ngFor="let item of auxAssentoList">
+            <p>Lugar: {{item.numeroAssento}}</p>
+            <p>{{preco}} kz</p>
+        </div>
+
+        <div class="total-pagar">
+            <p>Total</p>
+            <p>{{total}} kz</p>
+        </div>
+
+        <!-- <a routerLink="/cliente/pagamento" class="pagamento">Pagamento</a> -->
+        <button class="pagamento" (click)="efetuarPedidoPagamento()">{{ nomeBotaoPagamento }}</button>
+        <!-- <div class="pagamento">
+
+        </div> -->
+    </div>
+</div>
+<!-- Modal -->
+<p-dialog header="Assento" [(visible)]="isDialogOpenAssento" [style]="{ 'width': '500px' }"
+>
+    <div class="estado">
+        <div class="estado-assento reservado">Reservado</div>
+        <div class="estado-assento disponivel">Disponível</div>
+        <div class="estado-assento inativo ocupado">Inactivo</div>
+    </div>
+   
+    <div class="container">
+        
+        <div class="buss-box">
+            
+          <div class="buss-head">
+            
+          </div>
+  
+          <div class="buss-body">
+            <div class="buss-body__content">
+                <div class="buss-seats-box">
+                   
+                    <div *ngFor="let seatRow of seats" class="seat-row">
+                        <ng-container *ngFor="let seat of seatRow; let i = index">
+                            
+                            <!-- <div class="seat">1</div> -->
+                            <div 
+                                class="seat" 
+                                [ngClass]="{
+                                    'reserved' : seat.getAttribute('estado') == 'RESERVADO', 
+                                    'available' : seat.getAttribute('estado') == 'DISPONIVEL',
+                                    'inativo' : seat.getAttribute('estado') == 'INATIVO'
+                                }" 
+                                [attr.usuario-id]="seat.getAttribute('usuario-id')"
+                                [attr.id-assento]="seat.getAttribute('id-assento')" 
+                                (click)="seat.getAttribute('id-assento') && toggleSeatState(seat.getAttribute('id-assento')!)">
+                                {{ seat.innerText }}
+                            </div>
+                            <span *ngIf="shouldRenderCorridor(seatRow.length, i)" class="corridor-span"></span>
+                        </ng-container>
+                    </div>
+                    
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-continue">
+        <button class="continue" (click)="continuar()"> continuar</button>
+    </div>
+      
+</p-dialog>
+
+<p-dialog  [(visible)]="isDialogOpenTimer" [style]="{ 'width': '500px' }" (onHide)="onCancel()"
+>
+    <h4 class="">O seu tempo para fazer a seleção dos assentos Expirou!!!</h4>
+    <div>
+        <!-- <button (click)="closeDialod()">Tentar Novamente</button>
+        <button (click)="pageProgramacao()">Voltar a perquisar</button> -->
+        <div class="btn">
+            <app-button
+             typeBtn="add-itemModal" 
+             text="Tentar Novamente" 
+             (click)="closeDialod()"
+             >
+            </app-button>
+
+            <app-button
+             
+             typeBtn="add-btn-with-border"  
+             text="Voltar a perquisar" 
+             (click)="pageProgramacao()"
+             type="button">
+            </app-button>
+           </div>
+    </div>
+</p-dialog>
+
+
+
+
+

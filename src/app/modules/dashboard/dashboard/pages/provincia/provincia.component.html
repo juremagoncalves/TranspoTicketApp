@@ -1,0 +1,16 @@
+<p-toast></p-toast>
+<div>
+    <p-fileUpload name="file" 
+    url="http://localhost:8080/provincia/" 
+    (onUpload)="onUpload($event)"  
+     accept=".xlsx"
+     method="post"
+     (onError)="onError($event)"
+     >
+    </p-fileUpload>
+</div>
+<br><br><br><br><br>
+<div>
+    <app-table [tableData]="provinciaList" [columnArray]="columnArray"></app-table>
+</div>
+

@@ -1,0 +1,188 @@
+:root {
+    
+  
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+  
+    color-scheme: light dark;
+    color: #000;
+    background-color: #fff;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  p{
+    color: red;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .estado{
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    justify-content: center;
+   
+    
+  }
+
+  .estado-assento{
+    padding: 5px;
+    /* background-color: red; */
+    margin-bottom: 20px;
+    color: #000;
+  }
+
+  .reservado{
+    background-color: green;
+
+  }
+  .disponivel{
+    background-color: var(--sky-100);
+  }
+
+  .inativo{
+    background-color: red;
+  }
+
+  .container {
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .buss-box {
+    width: 268px;
+    
+  }
+  
+  .buss-head {
+    width: 100%;
+    height: 78px;
+    border-radius: 150px 150px 15px 15px;
+    background-color: var(--sky-300);
+    border: 2px solid var(--sky-600);
+    margin-bottom: 20px;
+    /* color: blue; */
+  }
+  
+  .buss-body {
+    width: 100%;
+    height: 500px;
+    background-color: var(--sky-300);
+    border: 2px solid var(--sky-600);
+    border-radius: 15px;
+    padding: 12px;
+  }
+  
+  .buss-body__content {
+    background-color: var(--board);
+    border: 2px solid var(--board-border);
+    height: 100%;
+    border-radius: 14px;
+    padding: 60px 12px 40px;
+  }
+  
+  .buss-seats-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    border-radius: 14px;
+    height: 100%;
+    padding: 6px;
+  }
+  
+  .seat-row {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .seat {
+    width: 30px;
+    height: 40px;
+    background-color: var(--sky-100);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .seat:hover {
+    background-color: var(--sky-100-hover);
+  }
+  
+  .seat-row-number {
+    color: var(--label);
+  }
+  
+  
+  .seat.occupied {
+      background-color: var(--occupied);
+      cursor: not-allowed;
+  }
+  
+  .seat.inactive {
+      background-color: var(--inactive);
+      cursor: not-allowed;
+  }
+  span{
+    background-color: red;
+    color: green;
+  }
+
+/* 
+.custom-dropdown{
+    margin-bottom: 0.75rem;
+    width: 100%;
+    background-color: blue;
+} */
+
+/* .drop-down{
+    display: flex;
+    flex-direction: column !important;
+}
+
+.dropMarca{
+    width: 100%;
+} */
+div.drop-down{
+    display: flex;
+    flex-direction: column;
+    gap: 1;
+}
+
+:host ::ng-deep {
+    
+    .drop-down{
+        width: 100%;
+        margin-bottom: 0.75rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--gray-300);
+        
+        outline: none;
+        
+        
+    } 
+  }
+
+  /* span{
+    background-color: rosybrown;
+  }
+
+  .seat-number{
+    background-color: #fff;
+  } */

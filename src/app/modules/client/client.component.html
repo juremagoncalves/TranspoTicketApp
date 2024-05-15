@@ -1,0 +1,27 @@
+<!-- <p>Nome: {{nome}}</p>
+<p>Email: {{email}}</p>
+<br>
+<app-button  text="logout" (click)="logout()"></app-button> -->
+<div class="main-container">
+    <div class="nav-bar">
+        <label class="logo" for="">CAEDY</label>
+        <div class="menu">
+            <app-navbar></app-navbar>
+        </div>
+        <!-- <div class="user-icon">
+            <i class="pi  pi-arrow-right" style="color: white"></i>
+        </div> -->
+
+        <div class="user-icon" >
+            <!-- <i  class="pi pi-user"></i> -->
+            {{nome}}
+        </div>
+    </div>
+    <div class="main">
+        <router-outlet></router-outlet> 
+    </div>
+    <div class="footer">
+
+    </div>
+
+</div>

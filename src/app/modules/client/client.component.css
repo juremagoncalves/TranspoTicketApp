@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.main-container{
+    /* background-image: url(./../../../assets/bus.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 70vh; */
+}
+
+.nav-bar{
+    background-color: #0082E6;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    /* gap: 20px; */
+}
+
+label.logo{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+}
+
+.user-icon{
+    padding: 0 100px;
+    color: white;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .nav-bar {
+      flex-direction: column;
+      height: auto;
+      align-items: flex-start;
+    }
+    
+    label.logo, .user-icon {
+      padding: 10px;
+    }
+    
+    label.logo {
+      padding-left: 20px;
+      font-size: 25px;
+    }
+  }
+  

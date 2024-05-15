@@ -1,0 +1,103 @@
+<!-- <div class="spinner-container" *ngIf="bilheteLista.length"> -->
+    <!-- Exemplo usando Angular Material -->
+    <!-- <mat-spinner></mat-spinner> -->
+
+    <!-- Exemplo usando HTML/CSS puro -->
+    <!-- <div class="loader"></div>
+</div> -->
+<br>
+<a routerLink="/cliente/home">Voltar</a>  
+<br>
+<div style="margin-top: 150px;">
+    <app-table [tableData]="bilheteListaUser" [columnArray]="columnArray" 
+    
+
+></app-table>
+</div>
+
+
+
+<p-dialog header="Bilhete" [(visible)]="isDialogOpen" [style]="{ 'width': '600px'}">
+    <div #dialogContent  *ngFor="let item of bilheteLista" class="container" >
+        <div class="info">
+            <div class="viajante i">
+                <span>Viajante</span>
+                <span>{{item.pedido.user.fkPessoa.nome}}</span>
+            </div>
+            <div class="info-caedy ">
+                <div class="detalhes-empresa">
+                    <span>Agencia</span>
+                    <div class="name-adress">
+                        <span>CAEDY, Rua 10, CASA 26, vivendas do Kilamba</span>
+                    </div>
+                </div>
+                <div class="telefone i ">
+                    <span>Telefone</span>
+                    <span>+ 244 928 213 223</span>
+                </div>
+                <div class="email i ">
+                    <span>Email</span>
+                    <span>caedy@gmail.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="slogan">
+            <h1>Venha ter uma Viagem Segura</h1>
+        </div>
+        <div class="DadosPedido">
+            <div class="item">
+                <p>Origem</p>
+                <p>{{item.pedido.programacao.fkRota.fkProvinciaOrigem.designacao}}</p>
+            </div>
+            <div class="item">
+                <p>Destino</p>
+                <p>{{item.pedido.programacao.fkRota.fkProvinciaDestino.designacao}}</p>
+            </div>
+            <div class="item">
+                <p>Partida</p>
+                <p><span>{{item.pedido.programacao.dataViagem | date: 'dd/MM/yyyy'}}</span><span>{{item.pedido.programacao.horaPartida}}</span></p>
+            </div>
+            <div class="item">
+                <p>Chegada</p>
+                <p><span>{{item.pedido.programacao.dataViagem | date: 'dd/MM/yyyy'}}</span><span>{{item.pedido.programacao.horaChegada}}</span></p>
+            </div>
+
+            <div class="item">
+                <p>Estado Reserva</p>
+                <p>{{item.pedido.estadoPedido}}</p>
+            </div>
+
+            <div class="item">
+                <p>Classe </p>
+                <p>{{item.pedido.programacao.fkTransporte.fkClasseServico.designacao}}</p>
+            </div>
+
+            <!-- <div *ngFor="let assento of assentos" class="item">
+                <p>Lugar </p>
+                <p>{{assento.numeroAssento}}</p>
+            </div> -->
+            <div  class="item">
+                <p>Lugar</p>
+                <p *ngFor="let assento of assentos; let ultimo = last">
+                    {{assento.numeroAssento}}{{!ultimo ? ',' : ''}}
+                </p>
+            </div>
+        </div>
+
+        <div class="ticket-detail">
+            <h3>Detalhes do Bilhete</h3>
+            <p> {{item.codigo}}</p>
+        </div>
+
+        <div class="preco">
+            <h3>Informação Geral</h3>
+            <p> {{item.pedido.totalPago}}</p>
+        </div>
+    </div>
+    <br><br>
+
+    <div class="btn-continue">
+        <button class="continue" (click)="generatePDF()"> Download</button>
+    </div>
+    <!-- <button (click)="generatePDF()">Download</button> -->
+</p-dialog>

@@ -1,0 +1,90 @@
+button{
+    cursor: pointer;
+    color: var(--white-color);
+    border: none;
+    font-weight: bold;
+}
+
+button[styleBtn="login-Resgister"]{
+    width: 100%;
+    border: 1px solid var(--blue-100);
+    padding: 8px;
+    border-radius: 12px;
+    background: var(--blue-200);
+    
+    margin-bottom: 12px;
+    transition: background-color 0.1s;;
+    &:hover {
+        background: #8da2fb;
+        font-weight: 500;
+    }
+}
+
+button[styleBtn="add-item"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: var(--blue-200); */
+    background:  #4763E4;
+    border-radius: 10px;
+    padding: 8px 4rem;
+    color: var(--white-color);
+    margin-top: 70px;
+    /* margin-left: 10px; */
+}
+
+button[styleBtn="btn-filter"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: var(--blue-200); */
+    background:  #4763E4;
+    border-radius: 5px;
+    padding: 8px 4rem;
+    color: var(--white-color);
+    /* margin-top: 70px; */
+    /* margin-left: 10px; */
+}
+
+button[styleBtn="add-btn-with-border"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: var(--blue-200); #5C73DB */
+    border-radius: 10px;
+    padding: 8px 32px;
+    /* border: solid 1px var(--blue-100); */
+    border:solid 1px #5C73DB;
+    background: transparent;
+    /* color: var(--blue-100); */
+    color: #5C73DB;
+    font-size: 14px;
+    
+}
+
+button[styleBtn="delete-button"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dc2626;
+    border-radius: 10px;
+    padding: 8px 32px;
+    /* border: solid 1px var(--blue-100); */
+    color: var(--white-color);
+    font-size: 14px;
+    
+}
+
+button[styleBtn="add-itemModal"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: var(--blue-200); */
+    background:  #4763E4;
+    border-radius: 10px;
+    padding: 8px 2rem;
+    color: var(--white-color);
+    font-size: 14px;
+    /* margin-top: 70px; */
+    /* margin-left: 10px; */
+}

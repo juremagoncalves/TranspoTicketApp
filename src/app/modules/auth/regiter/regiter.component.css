@@ -1,0 +1,51 @@
+
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.container{
+    width: 460px;
+    padding: 20px 10px;
+}
+
+.container h1{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 600;   
+}
+
+.accept-terms{
+    margin: 12px 0 12px 0;
+    display: flex;
+    gap: 5px;
+}
+
+.accept-terms span{
+    color: var(--blue-100);
+}
+
+.sigin{
+    text-align: center;
+}
+
+.sigin a{
+    color: var(--blue-100);
+}
+
+@media(max-width: 466px){
+    .container{
+        width: 350px;
+    }
+}
+
+@media(max-width: 352px){
+    .container{
+        width: 250px;
+    }
+}

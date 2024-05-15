@@ -1,0 +1,25 @@
+<div class="main-container">
+    <div class="side-nav">
+        <div class="header">
+            <img src="../../../../assets/logo.svg" alt="" class="logo">
+        </div>
+        <app-side-nav></app-side-nav>
+        <div class="profile-container">
+        <a href="" class="profile">
+            <div class="name-email">
+                <span>{{nome}}</span>
+                <span>{{email}}</span>
+            </div>
+            <div class="user-icon">
+                <i class="fa-regular fa-user"></i>
+            </div>
+        </a>
+        </div>
+    </div>
+    
+    <div class="main">
+        <!-- <app-main></app-main> -->
+        <router-outlet></router-outlet> 
+        
+    </div>
+</div>

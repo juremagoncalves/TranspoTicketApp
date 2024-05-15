@@ -1,0 +1,44 @@
+
+<p-toast ></p-toast>
+<section>
+  
+    <img src="../../../assets/logo1.svg" alt="Logo da empresa" />
+<div class="container">
+    <h1>Por favor, digite suas informações de login</h1>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      
+      <app-input 
+        label="Email" 
+        id="email"
+        type="email" 
+        placeholder="Adrian@gmail.com"
+        formControlName="email"
+        [control]="getControl('email')"
+       
+      >
+      </app-input>
+      <app-input 
+        label="Senha" 
+        id="password"
+        type="password" 
+        placeholder="************"
+        formControlName="password"
+        [control]="getControl('password')"
+      >
+      </app-input>
+     
+      <p class="remember-password">Esqueceu sua senha?</p>
+
+      <app-button typeBtn="login-Resgister" text="Entrar" [disabled]="!formulario.valid"  [loading]="loading">
+        <!-- <i class="pi pi-spin pi-spinner" *ngIf="loading" style="font-size: 2rem; color: red;"></i> -->
+      </app-button>
+
+      <p class="register">
+        Você não tem uma conta?
+        <a routerLink="/register" href=""> Crie a sua conta aqui </a>
+        <!-- <i class="pi pi-spin pi-spinner" *ngIf="loading" style="font-size: 2rem; color: red;"></i> -->
+      </p>
+    </form>
+  </div>
+</section>
+

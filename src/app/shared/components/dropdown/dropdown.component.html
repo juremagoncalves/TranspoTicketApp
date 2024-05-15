@@ -1,0 +1,14 @@
+<p-dropdown
+[options]="options"
+optionLabel="{{ optionLabel }}"
+placeholder="{{ placeholder }}"
+[filter]="filter" 
+filterBy="{{ filterBy }}"
+[showClear]="showClear"
+(blur)="onTouched()"
+(ngModelChange)="onChange($event)"
+[formControlName]="formControlName"
+
+>
+<!-- <app-error-msg [control]="control" [label]="optionLabel"> </app-error-msg> -->
+</p-dropdown>

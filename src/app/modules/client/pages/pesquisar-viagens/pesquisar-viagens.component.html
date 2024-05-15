@@ -1,0 +1,48 @@
+<div class="hero">
+    <div class="container">
+        <p class="links">
+            <a routerLink="/cliente/home">Home</a> > 
+            <a routerLink="/cliente/pesquisar-viagens">Pesquisar Viagens</a>
+        </p>
+        <!-- <h1>Venha conhecer Angola</h1> -->
+        <section >
+            <form class="filtrar-viagem" [formGroup]="formulario" (ngSubmit)="procurar()">
+                <div class="">
+                    <label for="">Rota</label>
+                    <p-dropdown
+                        [options]="rotaList"
+                        placeholder="Selecione a rota"
+                        optionLabel="label"
+                        formControlName="pkRota"
+                        class="custom-dropdown"
+                        styleClass="drop-down">
+                    </p-dropdown>
+                </div>
+    
+                <div>
+                    <!-- <label for="">Data</label>
+                    <p-calendar formControlName="dataViagem" styleClass="custom-calendar" inputId="birth_date">
+                        
+                    </p-calendar> -->
+        <app-input
+          label="Data" 
+          id="dataViagem"
+          type="date" 
+          placeholder="digite uma data"
+          formControlName="dataViagem"
+          [control]="getControl('dataViagem')"
+          >
+       </app-input>
+                    
+                </div>
+    
+                <div>
+                    <app-button typeBtn="btn-filter" text="Procurar"></app-button>
+                </div>
+            </form>
+        </section>
+    </div>
+    
+    
+    
+</div>

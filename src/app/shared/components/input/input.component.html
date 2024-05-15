@@ -1,0 +1,21 @@
+<div class="input-block">
+    <label [attr.for]="id" >{{label}}</label>
+    <input [type]="type" [placeholder]="placeholder" [id]="id"
+    [(ngModel)]="value" 
+    (blur)="onBlur()"
+    (input)="handleInput($event)"
+    pInputText
+    >
+    <app-error-msg [control]="control" [label]="label"> </app-error-msg>
+</div>
+
+<!-- <div class="input-block">
+    <label [attr.for]="id">{{label}}</label>
+    <p-inputText [placeholder]="placeholder" [id]="id"
+                 [(ngModel)]="value" 
+                 (blur)="onBlur()"
+                 (input)="handleInput($event)">
+    </p-inputText>
+    <app-error-msg [control]="control" [label]="label"> </app-error-msg>
+</div> -->
+

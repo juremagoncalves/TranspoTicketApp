@@ -1,0 +1,44 @@
+
+<div class="input-block ">
+    <input type="text" [(ngModel)]="searchBox" (ngModelChange)="onSearchChange($event)" placeholder="Faça a sua busca">
+    
+</div>
+
+<table class="content-table" >
+
+    <thead>
+        <tr>
+            <th>Nº</th>
+            <th *ngFor="let column of columnArray">{{column.header}}</th>
+        </tr>
+    </thead>
+
+    <tbody>                                                                                                                                                             
+        <tr *ngFor="let item of filteredData; let num = index" >
+            <td>{{num +1 }}</td>
+
+            <td *ngFor="let columns of columnArray">
+                <div class="btn" *ngIf="columns.header == 'Ação' && showActionButtonb">
+                    <app-button typeBtn="add-btn-with-border"  text="Editar" (clickEvent)="onEditClicked(item)"></app-button>
+                    <app-button typeBtn="delete-button" text="Delete" (clickEvent)="ondeleteClicked(item)"></app-button>
+                    <ng-container *ngIf="assentoClickedOptional">
+                        <app-button typeBtn="add-btn-with-border"  text="Assento" (clickEvent)="onClicked(item)"></app-button>
+                    </ng-container>
+                    
+                    
+                </div>
+                <div *ngIf="columns !== 'Ação'">
+                   
+                    {{getFieldValue(item, columns.fieldName)}}
+                </div>
+                
+            </td>
+        </tr>
+    </tbody>
+
+</table>    
+<p-paginator [rows]="rowsPerPage" [totalRecords]="totalRecords" (onPageChange)="onPageChange($event)"></p-paginator>
+
+
+
+ 

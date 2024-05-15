@@ -1,0 +1,94 @@
+<p-confirmDialog></p-confirmDialog>
+<app-page-title text="Preço Viagem"></app-page-title>
+<app-button  text="Adicionar" (click)="openDialog()"></app-button>
+<p-dialog header="Preço Viagem" [(visible)]="isDialogOpen" [style]="{ 'width': '400px' }" (onHide)="onCancel()">
+    <form [formGroup]="formulario" (ngSubmit)="editarModal ? update() : onSubmit()">
+
+        <div class="">
+            <label for="">Classe Serviço</label>
+            <p-dropdown
+            [options]="classeServicoList"
+            placeholder="Selecione a Classe de Serviço"
+            optionLabel="designacao"
+            formControlName="pkClasseServico"
+            class="custom-dropdown"
+            styleClass="drop-down"
+            (onChange)="getTransporteByPkClasseServico($event.value)"
+            >
+            </p-dropdown>
+            
+           </div>
+       <!--  -->
+       <div class="">
+        <label for="">Transporte</label>
+        <p-dropdown
+        [options]="transporteList"
+        placeholder="Selecione o transporte"
+        optionLabel="matricula"
+        formControlName="pkTransporte"
+        class="custom-dropdown"
+        styleClass="drop-down"
+        >
+        </p-dropdown>
+        
+       </div>
+       
+       <div class="">
+        <label for="">Rota</label>
+        <p-dropdown
+        [options]="rotaList"
+        placeholder="Selecione a rota"
+        optionLabel="label"
+        formControlName="pkRota"
+        class="custom-dropdown"
+        styleClass="drop-down"
+        >
+        </p-dropdown>
+        
+       </div>
+        
+
+        <app-input
+        label="Preço" 
+        id="preco"
+        type="number" 
+        placeholder="digite um Preço"
+        formControlName="preco"
+        [control]="getControl('preco')"
+        >
+       </app-input>
+        
+       <br>
+       
+
+       <div class="btn">
+        <app-button
+         typeBtn="add-itemModal" 
+         [text]="editarModal ? 'Actualizar' : 'Adicionar'" 
+         [disabled]="!formulario.valid">
+        </app-button>
+
+        <app-button
+         
+         typeBtn="add-btn-with-border"  
+         text="Cancelar" 
+         (click)="closeDialog()"
+         type="button">
+        </app-button>
+       </div>
+
+    </form> 
+</p-dialog>
+
+<app-table [tableData]="precoViagemList" [columnArray]="columnArray" (editClicked)="edit($event)"
+     [showActionButtonb]="true"
+
+>
+
+
+</app-table>
+
+<!-- <button (click)="onSubmit()">ccc</button> -->
+
+
+

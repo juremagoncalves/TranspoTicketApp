@@ -1,0 +1,117 @@
+
+.hero{
+    background: linear-gradient(180deg, rgba(0, 0,0,.6),  rgba(0, 0, 0, .7)), url(../../../../../assets/bus.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 60vh;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1130px;
+    margin: 0 auto;
+    width: 100%;
+    
+    padding: 10px;
+    height: auto;
+    min-height: 60vh;
+    max-height: 100%;
+    
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+h1{
+    color: #fff;
+    margin-top: auto;
+}
+
+.box-center {
+    display: flex;
+    flex-direction: column;
+    gap: 80px; 
+    /* 10 */
+    margin-bottom: -340px;
+    /* 180 */
+}
+
+.filtrar-viagem{
+    /* min-height: 150px; */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding: 30px;
+    /* margin-bottom: -60px; */
+}
+
+
+.box-reservas{
+    /* min-height: 150px; */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 585px;
+    padding: 30px;
+}
+.my-reservation{
+    /* background-color: red; */
+    display: flex;
+    gap: 5px;
+    /* padding: 0px 12px 30px; */
+    padding: 30px 50px;
+    align-items: center;
+    justify-content: center;
+    /* text-align: center; */
+    text-decoration: none;
+    color: black;
+    border: solid 1px #ccc;
+    border-radius: 10px;
+
+}
+
+.help{
+    display: flex;
+    gap: 5px;
+    padding: 30px 75px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    border: solid 1px #ccc;
+    border-radius: 10px;
+}
+
+:host ::ng-deep {
+    
+    .drop-down{
+        width: 200px;
+        height:37px ;
+        border: 1px solid var(--gray-300);
+        outline: none;
+        margin-left: 5px;
+    } 
+    .custom-calendar {
+        width: 200px;
+        height:37px ; 
+        border-radius: 0.85rem;
+        outline: none;
+        margin-left: 5px;
+        
+    }
+
+    
+
+  }
+  
